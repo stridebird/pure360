@@ -1,0 +1,22 @@
+body {
+    font-family: helvetica, arial, sans;
+    font-size: 0.9em;
+}
+div.container {
+    margin: 10px;
+    border: 1px solid #e2e2e2;
+    padding: 10px;
+}
+div.graph-input {
+    clear: left;
+    padding: 10px 0;
+}
+div.graph-output {
+    clear: left;
+    padding: 10px 0;
+    border-top: 1px solid #e2e2e2;
+}
+div.footer {
+    clear: left;
+    padding: 10px 0;
+}
