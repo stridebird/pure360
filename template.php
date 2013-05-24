@@ -11,14 +11,11 @@
                 window.location.href = "?file=" + $(this).val();
             });
             $(".typeselectorbutton").click(function(){
+                // regenerate chart image
                 var activetypes = $('input:checkbox:checked').map(function(){
                     return this.value;
                 }).get();
-                // reload page with new file
-                //                    alert("typeselectorbutton - ");
-                $('img#drawgraph').css('opacity', '0.5');
                 $('img#drawgraph').attr('src', 'drawgraph.php?file=<?= $file ?>&types='+activetypes );
-                $('img#drawgraph').css('opacity', '1');
                 return false;
             });
         });
@@ -47,6 +44,12 @@
                     Warning! Upload folder is not writable. Upload disabled.
                 </div>
             <?php endif; ?>
+            <?php if (isset($_SESSION['messages']) ) : ?>
+                <div class="errorbox">
+                    <?php echo "<div>".join("</div><div>",$_SESSION['messages'])."</div>"; ?>
+                    <?php unset($_SESSION['messages']); ?>
+                </div>
+            <?php endif; ?>
 
         </div>
 
@@ -72,7 +75,7 @@
             </div>
         <?php endif; ?>
         <div class="footer">
-            pure360 graph app &copy; 2013 || download the code: <a href="pure360demo.tar.gz">[tar.gz]</a> | <a href="pure360demo.zip">[zip]</a>
+            pure360 JPGraph app &copy; 2013 || download the code: <a href="pure360demo.tar.gz">[tar.gz]</a> | <a href="pure360demo.zip">[zip]</a>
         </div>
     </div>
 </body>
