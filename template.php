@@ -2,8 +2,8 @@
     <head>
         <title>pure360 jpgraph app</title>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link href="/css/reset.css" rel="stylesheet"/>
-    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="css/reset.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".fileselector").change(function(){
