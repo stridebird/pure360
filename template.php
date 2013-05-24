@@ -59,7 +59,8 @@
                             $colour = $plotseriescolours[ $c++ % count($plotseriescolours )];
                             ?>
                 <div>
-                            <input type="checkbox" name="datatypes[]" value="<?= $type ?>" checked='checked' /> <?= $type ?>
+                            <input type="checkbox" name="datatypes[]" value="<?= $type ?>" checked='checked' /> 
+                            <span style="color: <?= $colour ?>; font-weight: bold;"><?= $type ?></span>
                 </div>
                         <?php endforeach; ?>
                     <br />
