@@ -1,18 +1,9 @@
 <html>
     <head>
         <title>pure360 jpgraph app</title>
-    <Xscript src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="/js/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <link href="/css/reset.css" rel="stylesheet"/>
     <link href="/css/styles.css" rel="stylesheet"/>
-    <style type="text/css" media="screen">
-        .errorbox {
-            border: 1px solid red;
-            padding: 10px;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-    </style>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".fileselector").change(function(){

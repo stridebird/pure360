@@ -20,3 +20,10 @@ div.footer {
     clear: left;
     padding: 10px 0;
 }
+
+.errorbox {
+    border: 1px solid red;
+    padding: 10px;
+    margin: 10px 0;
+    font-weight: bold;
+}
