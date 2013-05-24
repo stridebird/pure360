@@ -11,8 +11,8 @@ $types = isset($_GET['types']) ? explode(",",$_GET['types']) : false;
 # read file into array
 $data = array();
 if ( $file && FromCSV($path.$file, $data) ) {
-    $graph = new Graph(300,200);
-    $graph->SetScale("linlin");
+    $graph = new Graph(600,400);
+    $graph->SetScale("linlin",0,100,0,100);
 
     $graph->img->SetMargin(40,40,40,40);        
     $graph->SetShadow();
