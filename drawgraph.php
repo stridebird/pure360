@@ -1,7 +1,7 @@
 <?php
 require_once("library.php");
 require_once("jpgraph/jpgraph.php");
-require_once ('jpgraph/jpgraph_scatter.php');
+require_once('jpgraph/jpgraph_scatter.php');
 
 
 # get selected file
