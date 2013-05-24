@@ -12,13 +12,17 @@ $types = isset($_GET['types']) ? explode(",",$_GET['types']) : false;
 $data = array();
 if ( $file && FromCSV($path.$file, $data) ) {
     $graph = new Graph(600,400);
-    $graph->SetScale("linlin",0,100,0,100);
+    foreach ( $data as $type=>$series) {
+        $max_x[] = max($data[$type]['x']);
+        $max_y[] = max($data[$type]['y']);
+    }
+    $graph->SetScale("linlin",0,max($max_y),0,max($max_x));
 
     $graph->img->SetMargin(40,40,40,40);        
     $graph->SetShadow();
 
-    $graph->title->Set("A simple scatter plot");
-    $graph->title->SetFont(FF_FONT1,FS_BOLD);
+    $graph->title->SetColor("red");
+    $graph->title->Set($file);
 
 #die(print_r($types,1));
     $c = 0;
