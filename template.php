@@ -11,9 +11,14 @@
                 window.location.href = "?file=" + $(this).val();
             });
             $(".typeselectorbutton").click(function(){
+                var activetypes = $('input:checkbox:checked').map(function(){
+                    return this.value;
+                }).get();
                 // reload page with new file
                 //                    alert("typeselectorbutton - ");
-                $('img#drawgraph').attr('src', 'drawgraph.php?file=<?= $file ?>&types='+$(".typeselector").val() );
+                $('img#drawgraph').css('opacity', '0.5');
+                $('img#drawgraph').attr('src', 'drawgraph.php?file=<?= $file ?>&types='+activetypes );
+                $('img#drawgraph').css('opacity', '1');
                 return false;
             });
         });
@@ -47,14 +52,15 @@
 
         <?php if ($file) : ?>
             <div class="graph-output">
-                <div style="float: left; width: 200;">
-                    <select class="typeselector" name="" multiple="true">
-                        <?php foreach ($datatypes as $type) : 
+                <div style="float: left; width: 200; margin-top: 40px">
+                    <p>select data series</p>
+                        <?php $c = 0; foreach ($datatypes as $type) : 
                             $colour = $plotseriescolours[ $c++ % count($plotseriescolours )];
                             ?>
-                            <option value="<?= $type ?>" selected='selected' style="color: <?= $colour ?>"> <?= $type ?> </option>
+                <div>
+                            <input type="checkbox" name="datatypes[]" value="<?= $type ?>" checked='checked' /> <?= $type ?>
+                </div>
                         <?php endforeach; ?>
-                    </select>
                     <br />
                     <input type="button" value="redraw" onclick="" class="typeselectorbutton"/>
                 </div>
