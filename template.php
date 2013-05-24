@@ -13,7 +13,7 @@
             $(".typeselectorbutton").click(function(){
                 // reload page with new file
                 //                    alert("typeselectorbutton - ");
-                $('img#drawgraph').attr('src', '/drawgraph.php?file=<?= $file ?>&types='+$(".typeselector").val() );
+                $('img#drawgraph').attr('src', 'drawgraph.php?file=<?= $file ?>&types='+$(".typeselector").val() );
                 return false;
             });
         });
