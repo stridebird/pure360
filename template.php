@@ -59,7 +59,7 @@
                     <input type="button" value="redraw" onclick="" class="typeselectorbutton"/>
                 </div>
                 <div style="">
-                    <img id="drawgraph" src="/drawgraph.php?file=<?= $file ?>">
+                    <img id="drawgraph" src="drawgraph.php?file=<?= $file ?>">
                 </div>
             </div>
         <?php endif; ?>
