@@ -26,6 +26,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Pure360 JPGraph application</h1>
         <div class="graph-input">
             Select file to graph: 
             <select class="fileselector" name="fileselector" >
@@ -36,8 +37,8 @@
                 <?php endforeach; ?>
             </select>
             <?php if ($uploadpathwritable) : ?>
-                <div style="">- or -</div>
-                <form action="./" method="post" enctype="multipart/form-data">
+                OR
+                <form action="./" method="post" enctype="multipart/form-data" style="display: inline;">
                     Upload new file: 
                     <input type="file" name="uploadfile" /><input type="submit" />
                 </form>
@@ -70,7 +71,7 @@
             </div>
         <?php endif; ?>
         <div class="footer">
-            pure360 graph app &copy; 2013 
+            pure360 graph app &copy; 2013 || download the code: <a href="pure360demo.tar.gz">[tar.gz]</a> | <a href="pure360demo.zip">[zip]</a>
         </div>
     </div>
 </body>
