@@ -5,39 +5,45 @@
  * 
  */
 
+# common functions
 require_once("library.php");
 
-# handle uploads
-$msg = "check forms: ";
-if ( $_POST ){
-    $msg .= "|got post";
-    if ( $_FILES ){
-        $msg .= "|got file";
-    }
-}
-#echo $msg;
+# config
+$uploadpath = "csvfiles/";
+$uploadpathwritable =  is_writable($uploadpath);
 
 # get selected file
 $file = isset($_GET['file']) ? $_GET['file'] : false;
-$path = "csvfiles/";
 
+# handle uploads
+$msg = "check forms: ";
+if ( $uploadpathwritable && isset($_FILES['uploadfile']['name']) ){
+#    $msg .= "|got file";
+    $file = $_FILES['uploadfile']['name'];
+    move_uploaded_file($_FILES['uploadfile']['tmp_name'], 'csvfiles/'.$file);
+    header("Location: ?file=$file");
+    exit;
+}
+#echo $msg;
 
+# data for template
+
+# load data file to extract datatypes
 $data = array();
-if ( $file && FromCSV($path.$file, $data) ) {
+if ( $file && FromCSV($uploadpath.$file, $data) ) {
+    # datatype list for current file
     $datatypes = array_keys($data);
 }
 
-# data for template
-# file list
-$fd = opendir($path);
+# load list of available files
+$fd = opendir($uploadpath);
 $availablefiles = array();
 while ( $f = readdir($fd)){
     if (substr($f, -4 ) != ".csv") continue;
     $availablefiles[] = $f;
 }
-    
-# datatype list for current file
 
+# load page template :
 include("template.php");
 
 

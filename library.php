@@ -1,4 +1,8 @@
 <?php
+
+$plotseriescolours = array("red","blue","green","orangered","orchid", "black","yellow");
+
+
 function FromCSV($aFile,&$aData,$aSepChar=',',$aMaxLineLength=1024) {
     # ripped from jpgraph_utils
     # consider extending class with this new method?

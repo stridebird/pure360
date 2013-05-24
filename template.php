@@ -1,53 +1,67 @@
 <html>
     <head>
         <title>pure360 jpgraph app</title>
-        <Xscript src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="/js/jquery-latest.js"></script>
-        <link href="/css/reset.css" rel="stylesheet"/>
-        <link href="/css/styles.css" rel="stylesheet"/>
-        <style type="text/css" media="screen">
-        </style>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $(".fileselector").change(function(){
-                    // reload page with new file
-                    window.location.href = "?file=" + $(this).val();
-                });
-                $(".typeselectorbutton").click(function(){
-                    // reload page with new file
-//                    alert("typeselectorbutton - ");
-                    $('img#drawgraph').attr('src', '/drawgraph.php?file=<?= $file ?>&types='+$(".typeselector").val() );
-                    return false;
-                });
+    <Xscript src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/js/jquery-latest.js"></script>
+    <link href="/css/reset.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <style type="text/css" media="screen">
+        .errorbox {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".fileselector").change(function(){
+                // reload page with new file
+                window.location.href = "?file=" + $(this).val();
             });
-        </script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="graph-input">
-                Select file to graph: 
-                <select class="fileselector" name="fileselector" >
-                     <option value=""></option>
-                   <?php foreach ($availablefiles as $f) : ?>
-                   <?php $selected = ( $f == $file) ? "selected='selected'":"" ; ?>
-v                        <option value="<?= $f ?>"><?= $f ?></option>
-                    <?php endforeach; ?>
-                </select>
-<br />
-- or -
-<br />
-                <form action="" method="post" enctype="multipart/form-data">
+            $(".typeselectorbutton").click(function(){
+                // reload page with new file
+                //                    alert("typeselectorbutton - ");
+                $('img#drawgraph').attr('src', '/drawgraph.php?file=<?= $file ?>&types='+$(".typeselector").val() );
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="graph-input">
+            Select file to graph: 
+            <select class="fileselector" name="fileselector" >
+                <option value=""></option>
+                <?php foreach ($availablefiles as $f) : ?>
+                    <?php $selected = ( $f == $file) ? "selected='selected'" : ""; ?>
+                    <option value="<?= $f ?>" <?= $selected ?>><?= $f ?></option>
+                <?php endforeach; ?>
+            </select>
+            <?php if ($uploadpathwritable) : ?>
+                <div style="">- or -</div>
+                <form action="./" method="post" enctype="multipart/form-data">
                     Upload new file: 
                     <input type="file" name="uploadfile" /><input type="submit" />
                 </form>
+            <?php else: ?>
+                <div class="errorbox">
+                    Warning! Upload folder is not writable. Upload disabled.
+                </div>
+            <?php endif; ?>
 
-            </div>
-<?php if ( $file ) : ?>
+        </div>
+
+
+        <?php if ($file) : ?>
             <div class="graph-output">
                 <div style="float: left; width: 200;">
                     <select class="typeselector" name="" multiple="true">
-                        <?php foreach ($datatypes as $type) : ?>
-                            <option value="<?= $type ?>" selected='selected'><?= $type ?></option>
+                        <?php foreach ($datatypes as $type) : 
+                            $colour = $plotseriescolours[ $c++ % count($plotseriescolours )];
+                            ?>
+                            <option value="<?= $type ?>" selected='selected' style="color: <?= $colour ?>"> <?= $type ?> </option>
                         <?php endforeach; ?>
                     </select>
                     <br />
@@ -57,10 +71,10 @@ v                        <option value="<?= $f ?>"><?= $f ?></option>
                     <img id="drawgraph" src="/drawgraph.php?file=<?= $file ?>">
                 </div>
             </div>
-<?php endif; ?>
-            <div class="footer">
-                pure360 graph app &copy; 2013 
-            </div>
+        <?php endif; ?>
+        <div class="footer">
+            pure360 graph app &copy; 2013 
         </div>
-    </body>
+    </div>
+</body>
 </html>
