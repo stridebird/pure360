@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pure360 JPGraph application</h1>
+        <h1>Pure360 JPGraph application (v)</h1>
         <div class="graph-input">
             Select file to graph: 
             <select class="fileselector" name="fileselector" >
