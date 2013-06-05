@@ -10,7 +10,7 @@ session_start();
 # common functions
 require_once("library.php");
 
-# config
+# configuration:
 $uploadpath = "csvfiles/";
 $uploadpathwritable =  is_writable($uploadpath);
 
